@@ -1,5 +1,5 @@
 # myGarage
-A Node.js-Express-MongoDB-Angular-jQuery Web Application
+A Node.js-Express-MongoDB-AngularJS-jQuery Web Application
 
 GARAGE WEB APPLICATION
 author: Christian Palazzo
@@ -10,14 +10,14 @@ The web application is actually designed in the simplest way (i.e. there are no 
 The application needs Node.js and npm to run on your client, for further informations: https://nodejs.org/ and https://www.npmjs.com/
 
 RUN INSTRUCIONS
-1) install Node.js on your client if not already installed
-2) install npm on your client if not already installed
-3) clone the project
-4) open a shell and go to the root directory of the Garage Web Application
-5) install the dependencies with the command: npm install
-6) type the command: node index.js
-   in some Linux environments (i.e. Ubuntu) the command is: nodejs index.js
-7) open a browser and go to http://localhost:3000
+- install Node.js on your client if not already installed
+- install npm on your client if not already installed
+- clone the project
+- open a shell and go to the root directory of the Garage Web Application
+- install the dependencies with the command: npm install
+- type the command: node index.js
+- in some Linux environments (i.e. Ubuntu) the command is: nodejs index.js
+- open a browser and go to http://localhost:3000
 
 IMPORTANT
  - the Garage Web Application uses a remote MongoDB database-as-service, for a correct operation of the application the client needs an internet connection without use of HTTP proxy.
@@ -27,7 +27,7 @@ IMPORTANT
 NOTES:
  if you want to take a look to the raw data stored in the database, run the application, open a browser and go to:
   - http://localhost:3000/list    (vehicles)
-  - http://localhost:3000/levels  (levels, number of slots per level, slots available)
+  - http://localhost:3000/levels  (levels, number of slots per level, available slots)
   - http://localhost:3000/types   (vehicle types)
 
 The application is highly configurable: if you add, remove or modify in the database:
@@ -37,7 +37,7 @@ The application is highly configurable: if you add, remove or modify in the data
 - vehicle types;
 - and of course vehicle items; 
 
-the application will show the data dinamically. When a vehicle is added or removed the available slots per level of the garage are updated.
+the application will show the data dinamically. When a vehicle is added or removed from the frontend, the available slots per level of the garage are updated.
 
 Moreover, the application is responsive, I wrote CSS from scratch without use of any CSS framework, try to resize your browser window. 
 
