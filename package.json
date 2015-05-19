@@ -7,7 +7,7 @@
     "test": ""
   },
   "author": "Christian Palazzo",
-  "license": "ISC",
+  "license": "GPL v3.0",
   "dependencies": {
   	"express": "4.12.3",
   	"body-parser": "1.12.4",
