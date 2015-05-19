@@ -1,0 +1,40 @@
+<script>
+	function animateForm() {
+		$("#addFormWrapper").addClass("animated fadeInUp");
+	}
+	$(document).ready(function(){
+		animateForm();
+	});
+</script>
+
+<main id="add_form">
+	<div id="addFormWrapper">
+
+		<form id="signLicence">
+			<div class="labels">
+				<label>
+					Please select a level:
+				</label>
+				<br />
+				<label>
+					Please select a vehicle type:
+				</label>
+			</div>
+
+			<div class="selects">
+				<select class="addSelect" ng-model="level._id">
+				  <option ng-repeat="level in levels | orderBy:'_id'" value="{{level._id}}">{{level._id}}</option>
+				</select>
+				<br />
+				<select class="addSelect" ng-model="type">
+				  <option ng-repeat="type in types" value="{{type.type}}">{{type.type}}</option>
+				</select>
+			</div>
+
+			<br />
+			<button class="signButton" type="button" ng-click="checkSlots(level._id,type)">Proceed</button>
+
+		</form>
+
+	</div>
+</main>

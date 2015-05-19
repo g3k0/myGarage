@@ -1,0 +1,31 @@
+<div id="paginator" ng-controller="MainController">
+
+    <div class="wrap2">
+        <div ng-if="pagination.current == 1" class="first">1</div>
+        <div ng-if="pagination.current != 1" class="first">{{pagination.current -1}}1</div>
+        <div class="last">{{pagination.current}}0</div>
+    </div>
+
+    <div class="wrap">
+        <div class="bar">/</div>
+        <div class="total">{{total}}</div>
+        <div class="text">VEHICLES</div>
+    </div>
+
+
+    <ul class="pagination" ng-if="1 < pages.length">
+
+        <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == 1 }">
+            <a href="" ng-click="setCurrent(pagination.current - 1)">
+                <i class="fa fa-angle-up fa-2x"></i>
+            </a>
+        </li>
+
+        <li ng-if="directionLinks" ng-class="{ disabled : pagination.current == pagination.last }">
+            <a href="" ng-click="setCurrent(pagination.current + 1)">
+                <i class="fa fa-angle-down fa-2x"></i>
+            </a>
+        </li>
+
+    </ul>
+</div>

@@ -1,0 +1,22 @@
+
+<script>
+	function animateLicence() {
+		$("#licenceWrap").addClass("animated fadeInDown");
+	}
+	$(document).ready(function(){
+		animateLicence();
+	});
+</script>
+
+<main id="add">
+
+	<div id="licenceWrap">
+		<form id="licence">
+			<label>
+				Please insert your driving licence code below: <br />
+			</label>
+			<input type="text" name="licence" ng-model="licence">
+		</form>
+		<button class="licenceButton" type="button" ng-click="checkLicence(licence)">SEND</button>
+	</div>
+</main>

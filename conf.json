@@ -1,0 +1,11 @@
+{
+	"mongoDb":
+	{
+	  "connectionString": "mongodb://myGarage:myGarage12@ds031882.mongolab.com:31882/mygarage_test",
+	  "collections": {
+	  	"vehicles": "vehicles",
+	  	"levels": "levels",
+	  	"types": "types"
+	  }
+	}
+}

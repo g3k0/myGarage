@@ -1,0 +1,82 @@
+<script>
+	function animateSearch() {
+		$("#search").addClass("animated fadeInLeft");
+	}
+
+	function animateSidebar() {
+		$("#sidebar").addClass("animated fadeInLeft");
+	}
+
+	function animateMain() {
+		$("#home").addClass("animated fadeInRight");
+	}
+	
+	$(document).ready(function(){
+		animateSearch();
+		animateSidebar();
+		animateMain();
+	});
+</script>
+<aside id="sidebar">
+	
+	<form id="search" role="search">
+		<input ng-model="q" class="searchInput" type="search">
+	</form>
+
+	<div id="level">
+		<h3>LEVELS</h3>
+		<ul>
+			<li ng-repeat="level in levels | orderBy:'_id'">
+				<a ng-click="setLevel(level._id)">
+					<i class="fa fa-circle"></i>
+					level {{level._id}}
+				</a>
+			</li>
+		</ul>
+
+		<a ng-click="setLevel('')">
+			<i class="fa fa-times"></i> 
+			clear level filter
+		</a>
+
+	</div>
+
+	<div id="type">
+		<h3>TYPE</h3>
+		<ul>
+			<li ng-repeat="type in types">
+				<a ng-click="setType(type.type)">
+					<i class="fa fa-circle"></i>
+					{{type.type}}
+				</a>
+			</li>
+		</ul>
+		<a ng-click="setType('')">
+			<i class="fa fa-times"></i> 
+			clear type filter
+		</a>
+	</div>
+
+</aside>
+
+<main id="home">
+	<div id="pagination">
+		<dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="js/directives/pagination/dirPagination.tpl.html">
+		</dir-pagination-controls>
+	</dir>
+
+	<div id="items">
+
+		<div class="item" dir-paginate="vehicle in vehicles | filter:q | isLevel:selectedLevel | isType:selectedType | itemsPerPage: pageSize" current-page="currentPage">
+			<div class="left">
+				{{vehicle._id}}<br />
+				{{vehicle.type}}
+			</div>
+			<div class="right">
+				Level {{vehicle.level}}<br />
+				Slot: {{vehicle.slot}}
+			</div>
+		</div>	<!-- close item -->
+
+	</div> <!-- close items -->
+</main>

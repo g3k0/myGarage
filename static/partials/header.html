@@ -1,0 +1,54 @@
+<script>
+// run the currently selected effect
+function runEffect() {
+  // most effect types need no options passed by default
+  var options = {};
+  
+  // run the effect
+  $( "#effect" ).toggle( "blind", options, 500 );
+}
+
+$(document).ready(function(){
+	$( "#button" ).click(function() {
+      runEffect();
+    });
+});
+</script>
+
+<header>
+	<div id="wrapper">
+
+		<div class="content">
+
+			<div id="button">
+				<i class="fa fa-bars fa-2x"></i>
+				<span class="menu">Vehicles</span>
+			</div>
+
+			<nav id="effect" style="display: none;">
+				<ul>
+					<li>
+						<a href="#/">
+							<i class="fa fa-home"></i>
+							home
+						</a>
+					</li>
+					<li>
+						<a href="#/add_vehicle">
+							<i class="fa fa-plus-square"></i>
+							add vehicle
+						</a>
+					</li>
+					<li>
+						<a href="#/remove_vehicle">
+							<i class="fa fa-minus-square"></i>
+							remove vehicle
+						</a>
+					</li>
+				</ul>
+			</nav>
+
+		</div><!-- close content -->
+			
+	</div> <!-- close wrapper -->
+</header>

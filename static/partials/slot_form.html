@@ -1,0 +1,32 @@
+<script>
+	function animateForm() {
+		$("#addFormWrapper").addClass("animated fadeInUp");
+	}
+	$(document).ready(function(){
+		animateForm();
+	});
+</script>
+
+<main id="add_form">
+	<div id="addFormWrapper">
+
+		<form id="signLicence">
+			<div class="labels">
+				<label>
+					Please select a slot:
+				</label>
+			</div>
+
+			<div class="selects">
+				<select class="addSelect" ng-model="slot">
+				  <option ng-repeat="t in availableSlots | orderBy" value="{{t}}">{{t}}</option>
+				</select>
+			</div>
+
+			<br />
+			<button class="signButton" type="button" ng-click="registerVehicle(slot)">Register</button>
+
+		</form>
+
+	</div>
+</main>

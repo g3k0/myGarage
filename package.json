@@ -1,0 +1,17 @@
+{
+  "name": "Garage Web Application",
+  "version": "1.0.0",
+  "description": "A garage managing application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Christian Palazzo",
+  "license": "ISC",
+  "dependencies": {
+  	"express": "*",
+  	"body-parser": "*",
+  	"jquery": "*",
+	  "mongoose": "*"
+  }
+}
