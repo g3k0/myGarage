@@ -67,7 +67,8 @@ angular.module('appApp')
             level = parseInt(level);
 
             var k;
-            for (k = 0; k < $rootScope.levels.length; k++) { 
+            var levelsLength = $rootScope.levels.length;
+            for (k = 0; k < levelsLength; k++) { 
 
                 //get the available slots for the selected level
                 if ($rootScope.levels[k]._id === level) {
@@ -77,7 +78,7 @@ angular.module('appApp')
 
             //if the array is empty there are no slots available, sorry
             if ($rootScope.availableSlots.length === 0) {
-                alert('Sorry, the level selected is full. Please come back and select another one');
+                alert('Sorry, the level selected is full.\nPlease come back and select another one');
                 return;
             }
             //ok, save the level
@@ -101,10 +102,10 @@ angular.module('appApp')
 
             //now I have all the data, I build the doc and send it to the backend       
             var doc = {
-                _id  : $rootScope.licence,
-                type : $rootScope.selectedType,
-                level: $rootScope.selectedLevel,
-                slot : $rootScope.slot
+                '_id'  : $rootScope.licence,
+                'type' : $rootScope.selectedType,
+                'level': $rootScope.selectedLevel,
+                'slot' : $rootScope.slot
             };
 
             calls.saveVehicle(doc, function (data) {
@@ -124,12 +125,12 @@ angular.module('appApp')
 
         $scope.remove = function (licence) {
             var flag = 0;
-     
+
             if (!licence) {
                 alert('Please enter a valid driving licence');
                 return;
             }
-      
+
             // check if the driving licence is present
             var licObj = {};
             var j;
