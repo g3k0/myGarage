@@ -7,7 +7,7 @@ email: palazzochristian@yahoo.it
 
 DESCRIPTION
 The web application is actually designed in the simplest way (i.e. there are no logs or error handling, form validations are implemented only frontend). 
-The application needs Node.js and npm to run on your client, for further informations: https://nodejs.org/ and https://www.npmjs.com/
+The application needs Node.js and npm to run on your client, for further informations: https://nodejs.org/ and https://www.npmjs.com/ 
 
 RUN INSTRUCIONS
 - install Node.js on your client if not already installed
@@ -41,7 +41,6 @@ the application will show the data dinamically. When a vehicle is added or remov
 
 Moreover, the application is responsive, I wrote CSS from scratch without use of any CSS framework, try to resize your browser window. 
 
-Finally, the 3 filters search, levels and type work togheter with an AND logic, while every single filter works with an OR logic.
+Finally, the 3 filters search, levels and type work togheter with an AND logic, while each single filter works with an OR logic.
 
 Actually the application is at version 1.0 and presents some bugs to fix. 
- 

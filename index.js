@@ -1,6 +1,7 @@
 /**
  * Module dependencies.
  */
+'use strict';
 var express    = require('express'),
     bodyParser = require('body-parser');
 
@@ -16,5 +17,5 @@ require('./routes')(app);
 
 // Listening
 app.listen(3000, function(){
-  console.log("Server listening on port 3000. Please open your browser at http://localhost:3000");
+    console.log("Server listening on port 3000. Please open your browser at http://localhost:3000");
 });

@@ -17,30 +17,30 @@ var conn = mongoose.connection;
 
 //defining schemas
 var vehiclesSchema = mongoose.Schema({
-  _id: String,
-  type: String,
-  level: Number,
-  slot: Number
+        '_id': String,
+        'type': String,
+        'level': Number,
+        'slot': Number
 
-}, {collection: coll.vehicles});
+    }, {collection: coll.vehicles});
 
 var levelsSchema = mongoose.Schema({
-  _id: Number,
-  slots: Number,
-  available: Array
+        '_id': Number,
+        'slots': Number,
+        'available': Array
 
-}, {collection: coll.levels});
+    }, {collection: coll.levels});
 
 var typesSchema = mongoose.Schema({
-  type: String
+        'type': String
 
-}, {collection: coll.types});
+    }, {collection: coll.types});
 
 
 
 //defining Models
 var Vehicles = mongoose.model('Vehicles', vehiclesSchema);
-var Levels   = mongoose.model('Levels',levelsSchema);
+var Levels   = mongoose.model('Levels', levelsSchema);
 var Types    = mongoose.model('Types', typesSchema);
 
 
