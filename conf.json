@@ -7,5 +7,7 @@
 	  	"levels": "levels",
 	  	"types": "types"
 	  }
-	}
+	},
+	"baseUri": "http://localhost",
+	"port": 3000
 }

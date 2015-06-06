@@ -1,13 +1,21 @@
 /**
- * Module dependencies.
+ * My Garage entry point.
  */
 'use strict';
+
+// Load dependencies
 var express    = require('express'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    fs         = require('fs');
 
 var app = module.exports = express();
 
-// Configuration
+// Read config file
+var AppConfig = {};
+var cfgFile = fs.readFileSync("./conf.json");
+AppConfig = JSON.parse(cfgFile);
+
+// Server configuration
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/static'));
@@ -16,6 +24,6 @@ app.use(express.static(__dirname + '/static'));
 require('./routes')(app);
 
 // Listening
-app.listen(3000, function(){
-    console.log("Server listening on port 3000. Please open your browser at http://localhost:3000");
+app.listen(AppConfig.port, function(){
+    console.log("Server listening on port " + AppConfig.port + ". Please open your browser at " + AppConfig.baseUri + ":" + AppConfig.port);
 });

@@ -1,10 +1,11 @@
 angular.module('appApp')
-    .controller('MainController', function ($scope, $rootScope, calls, $timeout) {
+    .controller('MainController', function ($scope, $rootScope, calls) {
         'use strict';
 
         //get data from db through service
         calls.getVehicles(function (data) {
             $rootScope.vehicles = data;
+            //pagination directive requires $scope, can't pass through $rootScope
             $scope.total = data.length;
         });
 
@@ -81,7 +82,7 @@ angular.module('appApp')
 
             //if the array is empty there are no slots available, sorry
             if ($rootScope.availableSlots.length === 0) {
-                alert('Sorry, the level selected is full.\nPlease come back and select another one');
+                alert('Sorry, the level selected is full.\nPlease come back and select another level');
                 return;
             }
             //ok, save the level
