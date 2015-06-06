@@ -1,4 +1,4 @@
-app.factory('calls', ['$rootScope', '$http', function ($rootScope, $http) {
+app.factory('calls', ['$http', function ($http) {
     'use strict';
 
     return {
