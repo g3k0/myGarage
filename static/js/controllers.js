@@ -81,7 +81,7 @@ angular.module('appApp')
             }
 
             //if the array is empty there are no slots available, sorry
-            if ($rootScope.availableSlots.length === 0) {
+            if (!$rootScope.availableSlots.length) {
                 alert('Sorry, the level selected is full.\nPlease come back and select another level');
                 return;
             }
@@ -135,7 +135,7 @@ angular.module('appApp')
                 return;
             }
 
-            // check if the driving licence is present
+            // check if the driving licence already exist
             var licObj = {};
             var j;
             for (j = 0; j < $rootScope.total; j++) {
