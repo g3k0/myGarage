@@ -4,17 +4,32 @@ angular.module('appApp')
 
         //get data from db through service
         calls.getVehicles(function (data) {
-            $rootScope.vehicles = data;
-            //pagination directive requires $scope, can't pass through $rootScope
-            $scope.total = data.length;
+            if (Array.isArray(data)) {
+                $rootScope.vehicles = data;
+                //pagination directive requires $scope, can't pass through $rootScope
+                $scope.total = data.length;
+            } else {
+                //call failed
+                console.log('Sorry, can\'t load vehicles data');
+            }
         });
 
         calls.getLevels(function (data) {
-            $rootScope.levels = data;
+            if (Array.isArray(data)) {
+                $rootScope.levels = data;
+            } else {
+                //call failed
+                console.log('Sorry, can\'t load levels data');
+            }
         });
 
         calls.getTypes(function (data) {
-            $rootScope.types = data;
+            if (Array.isArray(data)) {
+                $rootScope.types = data;
+            } else {
+                //call failed
+                console.log('Sorry, can\'t load vehicle types data');
+            }
         });
 
         //pagination
@@ -85,7 +100,6 @@ angular.module('appApp')
                 alert('Sorry, the level selected is full.\nPlease come back and select another level');
                 return;
             }
-            //ok, save the level
             $rootScope.selectedLevel = '';
             $rootScope.selectedType = '';
             $rootScope.selectedLevel = level;
@@ -113,13 +127,20 @@ angular.module('appApp')
             };
 
             calls.saveVehicle(doc, function (data) {
-                //variables cleaning
-                delete $rootScope.licence;
-                delete $rootScope.selectedType;
-                delete $rootScope.selectedLevel;
-                delete $rootScope.slot;
-                $location.path("/ty_page_add");
-                return;
+                if (data === 'ok') {
+                    //variables cleaning
+                    delete $rootScope.licence;
+                    delete $rootScope.selectedType;
+                    delete $rootScope.selectedLevel;
+                    delete $rootScope.slot;
+                    $location.path("/ty_page_add");
+                    return;
+                } else {
+                    //vehicle saving failed
+                    console.log('Sorry, something went wrong in saving vehicle');
+                    $location.path("/ops");
+                    return;
+                }
             });
         };
     })
@@ -145,8 +166,15 @@ angular.module('appApp')
                     flag = 1;
                     licObj.lic = licence;
                     calls.removeVehicle(licObj, function (data) {
-                        $location.path("/ty_page_remove");
-                        return;
+                        if (data === 'ok') {
+                            $location.path("/ty_page_remove");
+                            return;
+                        } else {
+                            //vehicle removing failed
+                            console.log('Sorry, something went wrong in removing vehicle');
+                            $location.path("/ops");
+                            return;
+                        }
                     });
                 } 
             }

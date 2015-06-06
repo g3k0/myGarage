@@ -40,6 +40,11 @@ var app = angular.module('appApp', [
                     controller: 'RemoveController',
                     pageTitle: 'Thank you page'
                 })
+                .when('/ops', {
+                    templateUrl: 'partials/ops.html',
+                    controller: 'MainController',
+                    pageTitle: 'Error page'
+                })
                 .otherwise({
                     redirectTo: '/'
                 });
