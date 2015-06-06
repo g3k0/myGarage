@@ -8,6 +8,7 @@ angular.module('appApp')
                 $rootScope.vehicles = data;
                 //pagination directive requires $scope, can't pass through $rootScope
                 $scope.total = data.length;
+                $rootScope.total = data.length;
             } else {
                 //call failed
                 console.log('Sorry, can\'t load vehicles data');
@@ -56,23 +57,25 @@ angular.module('appApp')
                 alert('Please enter a valid driving licence');
                 return;
             }
-            var i;
-            for (i = 0; i < $rootScope.total; i++) {
+            (function () {
+                var i;
+                for (i = 0; i < $rootScope.total; i++) {
 
-                if ($rootScope.vehicles[i]._id === licence) {
+                    if ($rootScope.vehicles[i]._id === licence) {
 
-                    //driving licence already exist, can't go on here
-                    alert('Sorry, driving lincence already signed');
-                    return;
-                } 
-            }
-            //save the licence
-            $rootScope.licence;
-            $rootScope.licence = licence;
+                        //driving licence already exist, can't go on here
+                        alert('Sorry, driving lincence already signed');
+                        return;
+                    } 
+                }
+                //save the licence
+                $rootScope.licence;
+                $rootScope.licence = licence;
 
-            //ok, redirect to registration form
-            $location.path("/add_form");
-            return;
+                //ok, redirect to registration form
+                $location.path("/add_form");
+                return;
+            })();
         };
 
         $scope.checkSlots = function(level, type) {
@@ -84,29 +87,31 @@ angular.module('appApp')
 
             //here arrives a string, convert to number
             level = parseInt(level, 10);
+            
+            (function (){
+                var i;
+                var levelsLength = $rootScope.levels.length;
+                for (i = 0; i < levelsLength; i++) { 
 
-            var k;
-            var levelsLength = $rootScope.levels.length;
-            for (k = 0; k < levelsLength; k++) { 
-
-                //get the available slots for the selected level
-                if ($rootScope.levels[k]._id === level) {
-                    $rootScope.availableSlots = $rootScope.levels[k].available;
+                    //get the available slots for the selected level
+                    if ($rootScope.levels[i]._id === level) {
+                        $rootScope.availableSlots = $rootScope.levels[i].available;
+                    }
                 }
-            }
 
-            //if the array is empty there are no slots available, sorry
-            if (!$rootScope.availableSlots.length) {
-                alert('Sorry, the level selected is full.\nPlease come back and select another level');
+                //if the array is empty there are no slots available, sorry
+                if (!$rootScope.availableSlots.length) {
+                    alert('Sorry, the level selected is full.\nPlease come back and select another level');
+                    return;
+                }
+                $rootScope.selectedLevel;
+                $rootScope.selectedType;
+                $rootScope.selectedLevel = level;
+                $rootScope.selectedType = type;
+
+                $location.path("/slot_form");
                 return;
-            }
-            $rootScope.selectedLevel;
-            $rootScope.selectedType;
-            $rootScope.selectedLevel = level;
-            $rootScope.selectedType = type;
-
-            $location.path("/slot_form");
-            return;
+            })();
         };
 
         $scope.registerVehicle = function (slot) {
@@ -157,31 +162,33 @@ angular.module('appApp')
             }
 
             // check if the driving licence already exist
-            var licObj = {};
-            var j;
-            for (j = 0; j < $rootScope.total; j++) {
+            (function (){
+                var licObj = {};
+                var i;
+                for (i = 0; i < $rootScope.total; i++) {
 
-                if ($rootScope.vehicles[j]._id === licence) {
-                    //we have a licence to remove, no problem here licence is univocal
-                    flag = 1;
-                    licObj.lic = licence;
-                    calls.removeVehicle(licObj, function (data) {
-                        if (data === 'ok') {
-                            $location.path("/ty_page_remove");
-                            return;
-                        } else {
-                            //vehicle removing failed
-                            console.log('Sorry, something went wrong in removing vehicle');
-                            $location.path("/ops");
-                            return;
-                        }
-                    });
-                } 
-            }
-            //driving licence not found
-            if (flag === 0) {
-                alert('Sorry, driving licence not found.\nNothing to remove');
-                return;
-            }
+                    if ($rootScope.vehicles[i]._id === licence) {
+                        //we have a licence to remove, no problem here licence is univocal
+                        flag = 1;
+                        licObj.lic = licence;
+                        calls.removeVehicle(licObj, function (data) {
+                            if (data === 'ok') {
+                                $location.path("/ty_page_remove");
+                                return;
+                            } else {
+                                //vehicle removing failed
+                                console.log('Sorry, something went wrong in removing vehicle');
+                                $location.path("/ops");
+                                return;
+                            }
+                        });
+                    } 
+                }
+                //driving licence not found
+                if (flag === 0) {
+                    alert('Sorry, driving licence not found.\nNothing to remove');
+                    return;
+                }
+            })();
         };
     });
