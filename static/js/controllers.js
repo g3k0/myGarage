@@ -83,7 +83,7 @@ angular.module('appApp')
             }
 
             //here arrives a string, convert to number
-            level = parseInt(level);
+            level = parseInt(level, 10);
 
             var k;
             var levelsLength = $rootScope.levels.length;
@@ -116,7 +116,7 @@ angular.module('appApp')
                 return;
             }
 
-            $rootScope.slot = parseInt(slot);
+            $rootScope.slot = parseInt(slot, 10);
 
             //now I have all the data, I build the doc and send it to the backend       
             var doc = {
