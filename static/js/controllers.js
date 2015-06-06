@@ -3,15 +3,18 @@ angular.module('appApp')
         'use strict';
 
         //get data from db through service
-        calls.getVehicles();
-        calls.getLevels();
-        calls.getTypes();
+        calls.getVehicles(function (data) {
+            $rootScope.vehicles = data;
+            $scope.total = data.length;
+        });
 
-        //pass total number of vehicles to the directive template view
-        //can't pass with rootScope. At first call the variable is not ready, I use $timeout here
-        $timeout(function () { 
-            $scope.total = $rootScope.total;
-        }, 500);
+        calls.getLevels(function (data) {
+            $rootScope.levels = data;
+        });
+
+        calls.getTypes(function (data) {
+            $rootScope.types = data;
+        });
 
         //pagination
         $scope.currentPage = 1;

@@ -2,22 +2,21 @@ app.factory('calls', ['$rootScope', '$http', function ($rootScope, $http) {
     'use strict';
 
     return {
-        getVehicles: function () {
+        getVehicles: function (callback) {
             $http.get('http://localhost:3000/list').success(function (data) {
-                $rootScope.vehicles = data;
-                $rootScope.total = data.length;
+                return callback(data);
             });
 
         },
-        getLevels: function () {
+        getLevels: function (callback) {
             $http.get('http://localhost:3000/levels').success(function (data) {
-                $rootScope.levels = data;
+                return callback(data);
             });
 
         },
-        getTypes: function () {
+        getTypes: function (callback) {
             $http.get('http://localhost:3000/types').success(function (data) {
-                $rootScope.types = data;
+                return callback(data);
             });
         },
         saveVehicle: function (doc, callback) {
