@@ -37,12 +37,12 @@ angular.module('appApp')
         $scope.pageSize = 10;
 
         //get data from the sidebar and pass them to the filters
-        $scope.selectedLevel = '';
+        $scope.selectedLevel;
         $scope.setLevel = function (level) {
             $scope.selectedLevel = level;
         };
 
-        $scope.selectedType = '';
+        $scope.selectedType;
         $scope.setType = function (type) {
             $scope.selectedType = type;
         };
@@ -67,7 +67,7 @@ angular.module('appApp')
                 } 
             }
             //save the licence
-            $rootScope.licence = '';
+            $rootScope.licence;
             $rootScope.licence = licence;
 
             //ok, redirect to registration form
@@ -100,8 +100,8 @@ angular.module('appApp')
                 alert('Sorry, the level selected is full.\nPlease come back and select another level');
                 return;
             }
-            $rootScope.selectedLevel = '';
-            $rootScope.selectedType = '';
+            $rootScope.selectedLevel;
+            $rootScope.selectedType;
             $rootScope.selectedLevel = level;
             $rootScope.selectedType = type;
 
