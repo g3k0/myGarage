@@ -3,16 +3,16 @@ app.factory('calls', ['$http', function ($http) {
 
     //load config file
     var getConf = function (callback) {
-        $.getJSON('conf.json', function (confData) {
-            return callback(confData);
+        $.getJSON('conf.json', function (conf) {
+            return callback(conf);
         });
     };
 
     return {
         getVehicles: function (callback) {
 
-            getConf(function (confData) {
-                $http.get(confData.baseUri + ':' + confData.port + '/list')
+            getConf(function (conf) {
+                $http.get(conf.baseUri + ':' + conf.port + '/list')
                     .success(function (data) {
                         return callback(data);
                     })
@@ -25,8 +25,8 @@ app.factory('calls', ['$http', function ($http) {
 
         getLevels: function (callback) {
 
-            getConf(function (confData) {
-                $http.get(confData.baseUri + ':' + confData.port + '/levels')
+            getConf(function (conf) {
+                $http.get(conf.baseUri + ':' + conf.port + '/levels')
                     .success(function (data) {
                         return callback(data);
                     })
@@ -39,8 +39,8 @@ app.factory('calls', ['$http', function ($http) {
 
         getTypes: function (callback) {
 
-            getConf(function (confData) {
-                $http.get(confData.baseUri + ':' + confData.port + '/types')
+            getConf(function (conf) {
+                $http.get(conf.baseUri + ':' + conf.port + '/types')
                     .success(function (data) {
                         return callback(data);
                     })
@@ -53,8 +53,8 @@ app.factory('calls', ['$http', function ($http) {
 
         saveVehicle: function (doc, callback) {
 
-            getConf(function (confData) {
-                $http.post(confData.baseUri + ':' + confData.port + '/save_vehicle', doc)
+            getConf(function (conf) {
+                $http.post(conf.baseUri + ':' + conf.port + '/save_vehicle', doc)
                     .success(function (data) {
                         return callback(data);
                     })
@@ -67,8 +67,8 @@ app.factory('calls', ['$http', function ($http) {
 
         removeVehicle: function (licence, callback) {
 
-            getConf(function (confData) {
-                $http.post(confData.baseUri + ':' + confData.port + '/remove_vehicle', licence)
+            getConf(function (conf) {
+                $http.post(conf.baseUri + ':' + conf.port + '/remove_vehicle', licence)
                     .success(function (data) {
                         return callback(data);
                     })

@@ -17,6 +17,7 @@
 		animateMain();
 	});
 </script>
+
 <aside id="sidebar">
 	
 	<form id="search" role="search">
@@ -63,11 +64,11 @@
 	<div id="pagination">
 		<dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="js/directives/pagination/dirPagination.tpl.html">
 		</dir-pagination-controls>
-	</dir>
+	</div>
 
 	<div id="items">
 
-		<div class="item" dir-paginate="vehicle in vehicles | filter:q | isLevel:selectedLevel | isType:selectedType | itemsPerPage: pageSize" current-page="currentPage">
+		<div class="item" ng-show="vehicles" dir-paginate="vehicle in vehicles | filter:q | isLevel:selectedLevel | isType:selectedType | itemsPerPage: pageSize" current-page="currentPage">
 			<div class="left">
 				{{vehicle._id}}<br />
 				{{vehicle.type}}
@@ -77,6 +78,22 @@
 				Slot: {{vehicle.slot}}
 			</div>
 		</div>	<!-- close item -->
+
+		<div class="left" ng-show="(vehicles | isLevel:selectedLevel).length === 0">
+			Sorry, no vehicles found in this level!
+		</div>
+
+		<div class="left" ng-show="(vehicles | isType:selectedType).length === 0">
+			Sorry, no vehicle type found!
+		</div>
+
+		<div class="left" ng-show="(vehicles | filter:q).length === 0">
+			Sorry, no results!
+		</div>
+
+		<div class="item" ng-hide="vehicles">
+            Sorry, garage is empty!
+		</div>
 
 	</div> <!-- close items -->
 </main>
