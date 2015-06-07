@@ -1,6 +1,7 @@
 'use strict';
 
-var db = require('../db.js');
+var db = require('../db.js'),
+    fs = require('fs');
 
 //actions definitions
 function listAction (req, res) {
@@ -133,6 +134,22 @@ function removeVehicleAction(req, res) {
     });
 }
 
+function getResourcesAction(req, res) {
+    var resource = req.params.rsc; 
+    
+    try {
+        var file = fs.readFileSync("./" + resource);
+        file = JSON.parse(file);
+
+    } catch (e) {
+        console.log('there was an error in parsing the resource requested: ' + e);
+        res.send('resource not found').end();
+
+    }
+
+    res.send(file).end();
+}
+
 module.exports = function (app) {
 
     // Single page Angular application route
@@ -154,4 +171,7 @@ module.exports = function (app) {
 
     //remove a vehicle
     app.post('/remove_vehicle', removeVehicleAction);
+
+    //get internal resources (should be JSON objects)
+    app.get('/:rsc', getResourcesAction);
 };
