@@ -11,8 +11,7 @@ function listAction (req, res) {
             res.end();
         }
 
-        res.send(docs);
-        res.end();
+        res.send(docs).end();
     });
 }
 
@@ -24,8 +23,7 @@ function levelsAction (req, res) {
             res.end();
         }
 
-        res.send(docs);
-        res.end();
+        res.send(docs).end();
     });
 }
 
@@ -37,8 +35,7 @@ function typesAction (req, res) {
             res.end();
         }
 
-        res.send(docs);
-        res.end();
+        res.send(docs).end();
     });
 }
 
@@ -49,8 +46,7 @@ function saveVehicleAction (req, res) {
 
     vehicle.save(function (err) {
         if (err) {
-            res.send(err);
-            res.end();
+            res.send(err).end();
             return;
         } 
         //vehicle saved, now I update level collection, I have to remove the slot
@@ -58,8 +54,7 @@ function saveVehicleAction (req, res) {
 
         db.Levels.find({'_id': level}, function (err, levelDoc) {
             if (err) {
-                res.send(err);
-                res.end();
+                res.send(err).end();
                 return;
             }
 
@@ -77,8 +72,7 @@ function saveVehicleAction (req, res) {
 
             db.Levels.remove({ '_id': levelDoc[0].id }, function (err) {
                 if (err) {
-                    res.send(err);
-                    res.end();
+                    res.send(err).end();
                     return;
                 } 
      
@@ -91,13 +85,11 @@ function saveVehicleAction (req, res) {
                 //update levels
                 newLevel.save(function (err) {
                     if (err) {
-                        res.send(err);
-                        res.end();
+                        res.send(err).end();
                         return;
                     }
                     console.log('documents updated correctly');
-                    res.send('ok');
-                    res.end();
+                    res.send('ok').end();
                 });
             });
         });
@@ -111,8 +103,7 @@ function removeVehicleAction(req, res) {
     //first I find the corresponding level and slot
     db.Vehicles.find({'_id': licence}, function (err, doc) {
         if (err) {
-            res.send(err);
-            res.end();
+            res.send(err).end();
             return;
         } 
 
@@ -121,8 +112,7 @@ function removeVehicleAction(req, res) {
         //now I delete the vehicle
         db.Vehicles.remove({'_id': licence}, function (err) {
             if (err) {
-                res.send(err);
-                res.end();
+                res.send(err).end();
                 return;
             } 
 
@@ -133,14 +123,12 @@ function removeVehicleAction(req, res) {
                 { safe: true, upsert: true },
                 function (err) {
                     if (err) {
-                        res.send(err);
-                        res.end();
+                        res.send(err).end();
                     }
                 }
             );
             console.log('vehicle removed!');
-            res.send('ok');
-            res.end();
+            res.send('ok').end();
         });
     });
 }
@@ -149,8 +137,7 @@ module.exports = function (app) {
 
     // Single page Angular application route
     app.get('/', function (req, res) {
-        res.redirect('/index.html');
-        res.end();
+        res.redirect('/index.html').end();
     });
 
     // get all vehicles
