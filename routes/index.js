@@ -3,7 +3,7 @@
 var db = require('../db.js');
 
 //actions definitions
-function listAction(req, res) {
+function listAction (req, res) {
     db.Vehicles.find(function (err, docs) {
         //don't use in production
         if (err) {
@@ -16,7 +16,7 @@ function listAction(req, res) {
     });
 }
 
-function levelsAction(req, res) {
+function levelsAction (req, res) {
     db.Levels.find(function (err, docs) {
         //don't use in production
         if (err) {
@@ -29,7 +29,7 @@ function levelsAction(req, res) {
     });
 }
 
-function typesAction(req, res) {
+function typesAction (req, res) {
     db.Types.find(function (err, docs) {
         //don't use in production
         if (err) {
@@ -42,12 +42,10 @@ function typesAction(req, res) {
     });
 }
 
-function saveVehicleAction(req, res) {
-    var doc = req.body;
+function saveVehicleAction (req, res) {
     console.log('request for saving vehicle accepted: ' + JSON.stringify(doc));
 
-
-    var vehicle = new db.Vehicles(doc);
+    var doc = req.body, vehicle = new db.Vehicles(doc);
 
     vehicle.save(function (err) {
         if (err) {
@@ -56,8 +54,7 @@ function saveVehicleAction(req, res) {
             return;
         } 
         //vehicle saved, now I update level collection, I have to remove the slot
-        var level = doc.level;
-        var slot = doc.slot;
+        var level = doc.level, slot = doc.slot;
 
         db.Levels.find({'_id': level}, function (err, levelDoc) {
             if (err) {
@@ -66,9 +63,9 @@ function saveVehicleAction(req, res) {
                 return;
             }
 
-            var newSlots = levelDoc[0].available;   
-            //remove the slot 
-            var index = newSlots.indexOf(slot);
+            var newSlots = levelDoc[0].available, index = newSlots.indexOf(slot);
+
+            //remove the slot
             if (index > -1) {
                 newSlots.splice(index, 1);
             }
@@ -89,9 +86,7 @@ function saveVehicleAction(req, res) {
                     '_id'      : levelDoc[0].id,
                     'slots'    : levelDoc[0].slots,
                     'available': newSlots
-                };
-
-                var newLevel = new db.Levels(newDoc); 
+                }, newLevel = new db.Levels(newDoc); 
 
                 //update levels
                 newLevel.save(function (err) {
@@ -99,7 +94,7 @@ function saveVehicleAction(req, res) {
                         res.send(err);
                         res.end();
                         return;
-                    }  
+                    }
                     console.log('documents updated correctly');
                     res.send('ok');
                     res.end();
@@ -121,8 +116,7 @@ function removeVehicleAction(req, res) {
             return;
         } 
 
-        var slot = doc[0].slot;
-        var level = doc[0].level;
+        var slot = doc[0].slot, level = doc[0].level;
 
         //now I delete the vehicle
         db.Vehicles.remove({'_id': licence}, function (err) {
@@ -146,12 +140,12 @@ function removeVehicleAction(req, res) {
             );
             console.log('vehicle removed!');
             res.send('ok');
-            res.end();    
+            res.end();
         });
     });
 }
 
-module.exports = function(app){
+module.exports = function (app) {
 
     // Single page Angular application route
     app.get('/', function (req, res) {

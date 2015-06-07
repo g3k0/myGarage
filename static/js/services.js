@@ -47,12 +47,12 @@ app.factory('calls', ['$http', function ($http) {
                     return callback(status);
                 });
         },
-        
+
         removeVehicle: function (licence, callback) {
             $http.post('http://localhost:3000/remove_vehicle', licence)
                 .success(function (data) {
                     return callback(data);
-                }) 
+                })
                 .error(function (data, status) {
                     console.log('vehicle removing failed with a status of ' + status);
                     return callback(status);

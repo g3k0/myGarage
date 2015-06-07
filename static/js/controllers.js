@@ -38,12 +38,10 @@ angular.module('appApp')
         $scope.pageSize = 10;
 
         //get data from the sidebar and pass them to the filters
-        $scope.selectedLevel;
         $scope.setLevel = function (level) {
             $scope.selectedLevel = level;
         };
 
-        $scope.selectedType;
         $scope.setType = function (type) {
             $scope.selectedType = type;
         };
@@ -59,6 +57,7 @@ angular.module('appApp')
             }
             (function () {
                 var i;
+
                 for (i = 0; i < $rootScope.total; i++) {
 
                     if ($rootScope.vehicles[i]._id === licence) {
@@ -68,6 +67,7 @@ angular.module('appApp')
                         return;
                     } 
                 }
+
                 //save the licence
                 $rootScope.licence;
                 $rootScope.licence = licence;
@@ -75,10 +75,10 @@ angular.module('appApp')
                 //ok, redirect to registration form
                 $location.path("/add_form");
                 return;
-            })();
+            }());
         };
 
-        $scope.checkSlots = function(level, type) {
+        $scope.checkSlots = function (level, type) {
 
             if (!level || !type) {
                 alert('Please complete the form');
@@ -88,9 +88,9 @@ angular.module('appApp')
             //here arrives a string, convert to number
             level = parseInt(level, 10);
             
-            (function (){
-                var i;
-                var levelsLength = $rootScope.levels.length;
+            (function () {
+                var i, levelsLength = $rootScope.levels.length;
+
                 for (i = 0; i < levelsLength; i++) { 
 
                     //get the available slots for the selected level
@@ -104,14 +104,13 @@ angular.module('appApp')
                     alert('Sorry, the level selected is full.\nPlease come back and select another level');
                     return;
                 }
-                $rootScope.selectedLevel;
-                $rootScope.selectedType;
+
                 $rootScope.selectedLevel = level;
                 $rootScope.selectedType = type;
 
                 $location.path("/slot_form");
                 return;
-            })();
+            }());
         };
 
         $scope.registerVehicle = function (slot) {
@@ -140,12 +139,12 @@ angular.module('appApp')
                     delete $rootScope.slot;
                     $location.path("/ty_page_add");
                     return;
-                } else {
-                    //vehicle saving failed
-                    console.log('Sorry, something went wrong in saving vehicle');
-                    $location.path("/ops");
-                    return;
                 }
+
+                //vehicle saving failed
+                console.log('Sorry, something went wrong in saving vehicle');
+                $location.path("/ops");
+                return;
             });
         };
     })
@@ -162,9 +161,9 @@ angular.module('appApp')
             }
 
             // check if the driving licence already exist
-            (function (){
-                var licObj = {};
-                var i;
+            (function () {
+                var licObj = {}, i;
+
                 for (i = 0; i < $rootScope.total; i++) {
 
                     if ($rootScope.vehicles[i]._id === licence) {
@@ -175,12 +174,13 @@ angular.module('appApp')
                             if (data === 'ok') {
                                 $location.path("/ty_page_remove");
                                 return;
-                            } else {
-                                //vehicle removing failed
-                                console.log('Sorry, something went wrong in removing vehicle');
-                                $location.path("/ops");
-                                return;
                             }
+
+                            //vehicle removing failed
+                            console.log('Sorry, something went wrong in removing vehicle');
+                            $location.path("/ops");
+                            return;
+                            
                         });
                     } 
                 }
@@ -189,6 +189,6 @@ angular.module('appApp')
                     alert('Sorry, driving licence not found.\nNothing to remove');
                     return;
                 }
-            })();
+            }());
         };
     });
