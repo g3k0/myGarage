@@ -7,7 +7,7 @@ angular.module('appApp')
             if (Array.isArray(data)) {
                 $rootScope.vehicles = data;
                 //pagination directive requires $scope, can't pass through $rootScope
-                $scope.total = data.length || 0;
+                $scope.total = data.length || "0";
                 $rootScope.total = data.length;
             } else {
                 //call failed
