@@ -6,7 +6,7 @@ author: Christian Palazzo
 email: palazzochristian@yahoo.it
 
 DESCRIPTION
-The web application is actually designed in the simplest way (i.e. there are no logs or error handling, form validations are implemented only frontend). 
+The web application backend is implementented in Node.js, persistant data are stored in a MongoDB database. The frontend is developed in AngularJS, jQuery, HTML5, CSS3. No CSS frameworks used.  
 The application needs Node.js and npm to run on your client, for further informations: https://nodejs.org/ and https://www.npmjs.com/ 
 
 RUN INSTRUCIONS
@@ -43,4 +43,4 @@ Moreover, the application is responsive, I wrote CSS from scratch without use of
 
 Finally, the 3 filters search, levels and type work togheter with an AND logic, while each single filter works with an OR logic.
 
-Actually the application is at version 1.0 and presents some bugs to fix. 
+Actually the application is at version 1.1 and presents some bugs to fix. 
