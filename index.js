@@ -24,6 +24,7 @@ app.use(express.static(__dirname + '/static'));
 require('./routes')(app);
 
 // Listening
-app.listen(process.env.PORT || AppConfig.port, function(){
-    console.log("Server listening on port " + AppConfig.port + ". Please open your browser at " + AppConfig.baseUri + ":" + AppConfig.port);
+var port = process.env.PORT || AppConfig.port;
+app.listen(port, function () {
+    console.log("Server listening on port " + port + ". Please open your browser at " + AppConfig.baseUri + ":" + port);
 });

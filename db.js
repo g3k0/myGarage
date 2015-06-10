@@ -12,7 +12,7 @@ var coll         = AppConfig.mongoDb.collections;
 
 
 //establish connection
-mongoose.connect(process.env.PROD_MONGODB || connString);
+mongoose.connect(connString);
 var conn = mongoose.connection;
 
 //defining schemas
