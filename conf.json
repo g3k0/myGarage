@@ -9,5 +9,5 @@
         }
     },
     "baseUri": "http://localhost",
-    "port": 3000
+    "port": 80
 }
