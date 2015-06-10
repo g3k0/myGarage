@@ -12,7 +12,7 @@ app.factory('calls', ['$http', function ($http) {
         getVehicles: function (callback) {
 
             getConf(function (conf) {
-                $http.get(conf.baseUri + ':' + conf.port + '/list')
+                $http.get(conf.herokuUri + ':' + conf.port + '/list')
                     .success(function (data) {
                         return callback(data);
                     })
@@ -26,7 +26,7 @@ app.factory('calls', ['$http', function ($http) {
         getLevels: function (callback) {
 
             getConf(function (conf) {
-                $http.get(conf.baseUri + ':' + conf.port + '/levels')
+                $http.get(conf.herokuUri + ':' + conf.port + '/levels')
                     .success(function (data) {
                         return callback(data);
                     })
@@ -40,7 +40,7 @@ app.factory('calls', ['$http', function ($http) {
         getTypes: function (callback) {
 
             getConf(function (conf) {
-                $http.get(conf.baseUri + ':' + conf.port + '/types')
+                $http.get(conf.herokuUri + ':' + conf.port + '/types')
                     .success(function (data) {
                         return callback(data);
                     })
@@ -54,7 +54,7 @@ app.factory('calls', ['$http', function ($http) {
         saveVehicle: function (doc, callback) {
 
             getConf(function (conf) {
-                $http.post(conf.baseUri + ':' + conf.port + '/save_vehicle', doc)
+                $http.post(conf.herokuUri + ':' + conf.port + '/save_vehicle', doc)
                     .success(function (data) {
                         return callback(data);
                     })
@@ -68,7 +68,7 @@ app.factory('calls', ['$http', function ($http) {
         removeVehicle: function (licence, callback) {
 
             getConf(function (conf) {
-                $http.post(conf.baseUri + ':' + conf.port + '/remove_vehicle', licence)
+                $http.post(conf.herokuUri + ':' + conf.port + '/remove_vehicle', licence)
                     .success(function (data) {
                         return callback(data);
                     })

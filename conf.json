@@ -9,5 +9,6 @@
         }
     },
     "baseUri": "http://localhost",
+    "herokuUri": "https://localhost",
     "port": 3000
 }
