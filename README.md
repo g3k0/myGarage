@@ -15,6 +15,7 @@ RUN INSTRUCIONS
 - clone the project
 - open a shell and go to the root directory of the Garage Web Application
 - install the dependencies with the command: npm install
+- the application is designed to run on Heroku hosting, to run locally on your machine you need to modify the file /static/js/services.js in order to implement local host and port for database data calls (look comments in the file)
 - type the command: node index.js
 - in some Linux environments (i.e. Ubuntu) the command is: nodejs index.js
 - open a browser and go to http://localhost:3000

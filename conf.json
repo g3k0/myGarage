@@ -9,6 +9,6 @@
         }
     },
     "baseUri": "http://localhost",
-    "herokuUri": "https://cryptic-headland-4686.herokuapp.com",
+    "herokuUri": "https://my-garage.herokuapp.com",
     "port": 3000
 }
