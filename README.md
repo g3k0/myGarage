@@ -10,8 +10,7 @@ The web application backend is implementented in Node.js, persistant data are st
 The application needs Node.js and npm to run on your client, for further informations: https://nodejs.org/ and https://www.npmjs.com/ 
 
 RUN INSTRUCIONS
-- install Node.js on your client if not already installed
-- install npm on your client if not already installed
+- install Node.js on your client if not already installed (npm will be installed with Node.js)
 - clone the project
 - open a shell and go to the root directory of the Garage Web Application
 - install the dependencies with the command: npm install
