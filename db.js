@@ -5,7 +5,11 @@ var fs = require('fs');
 // read config file
 var AppConfig = {};
 var cfgFile = fs.readFileSync("./conf.json");
-AppConfig = JSON.parse(cfgFile);
+try {
+    AppConfig = JSON.parse(cfgFile);
+} catch (e) {
+    console.log('something went wrong in parsing config file, error: ' + e);
+}
 
 var connString   = AppConfig.mongoDb.connectionString;
 var coll         = AppConfig.mongoDb.collections;

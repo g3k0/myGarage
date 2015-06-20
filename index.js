@@ -13,7 +13,11 @@ var app = module.exports = express();
 // Read config file
 var AppConfig = {};
 var cfgFile = fs.readFileSync("./conf.json");
-AppConfig = JSON.parse(cfgFile);
+try {
+    AppConfig = JSON.parse(cfgFile);
+} catch (e) {
+    console.log('something went wrong in parsing config file, error: ' + e);
+}
 
 // Server configuration
 app.use(bodyParser.urlencoded({ extended: false }));
