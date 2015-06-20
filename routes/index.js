@@ -1,3 +1,8 @@
+/*
+* My Garage web application
+* Module: routes
+* File: index.js, module entry point, routes mapping
+*/
 'use strict';
 
 //dependencies require

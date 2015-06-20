@@ -1,10 +1,15 @@
+/*
+* My Garage web application
+* Module: routes
+* File: action.js, actions definitions
+*/
 'use strict';
 
+//dependencies requires
 var db = require('../db.js'),
     fs = require('fs');
 
 //actions definitions
-
 function indexAction (req, res) {
     res.redirect('/index.html').end();
 }

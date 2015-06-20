@@ -1,3 +1,8 @@
+/*
+* My Garage web application
+* Module: db.js, Model definition
+*/
+
 //modules import
 var mongoose = require('mongoose');
 var fs = require('fs');
