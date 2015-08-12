@@ -3,7 +3,7 @@ A Node.js-Express-MongoDB-AngularJS-jQuery Web Application
 
 GARAGE WEB APPLICATION
 author: Christian Palazzo
-email: palazzochristian@yahoo.it
+email: info@christianpalazzo.org
 
 DESCRIPTION
 The web application backend is implementented in Node.js, persistant data are stored in a MongoDB database. The frontend is developed in AngularJS, jQuery, HTML5, CSS3. No CSS frameworks used.  
